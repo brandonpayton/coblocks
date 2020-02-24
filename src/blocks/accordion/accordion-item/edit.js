@@ -38,7 +38,10 @@ class Edit extends Component {
 			textColor,
 		} = this.props;
 
-		const { title } = attributes;
+		const {
+			title,
+			open,
+		} = attributes;
 
 		return (
 			<Fragment>
@@ -54,8 +57,7 @@ class Edit extends Component {
 				) }
 				<div
 					className={ classnames(
-						className,
-						`${ className }--open`, {
+						className, {
 							'is-selected': isSelected,
 						}
 					) }
@@ -85,15 +87,17 @@ class Edit extends Component {
 							}
 						} }
 					/>
-					<div
-						className="wp-block-coblocks-accordion-item__content"
-						style={ { borderColor: backgroundColor.color } }
-					>
-						<InnerBlocks
-							template={ TEMPLATE }
-							templateInsertUpdatesSelection={ false }
-						/>
-					</div>
+					{ ( isSelected || open ) && (
+						<div
+							className="wp-block-coblocks-accordion-item__content"
+							style={ { borderColor: backgroundColor.color } }
+						>
+							<InnerBlocks
+								template={ TEMPLATE }
+								templateInsertUpdatesSelection={ false }
+							/>
+						</div>
+					) }
 				</div>
 			</Fragment>
 		);

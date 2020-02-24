@@ -16,7 +16,7 @@
 		}
 	}
 
-	&--open &__title {
+	&.is-selected &__title {
 		border-radius: 4px 4px 0 0;
 	}
 
